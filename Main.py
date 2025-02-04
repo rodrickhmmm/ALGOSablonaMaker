@@ -22,21 +22,21 @@ else:
     exit()
     
 # Uživatelský vstup
-nazevslozky = input("Název složky, do které chceš program uložit: ")
-nadpis = input(bila + "Jaký chceš, aby byl název programu: " + zelena)
-autor = input("Autor programu:" + zelena)
-popis = input(bila + "Zadej popis programu: " + zelena)
-ulozitSoubor = input(bila + "Zadej název souboru (bez přípony): " + zelena) + ".py"  # Vytvoření .py souboru
+nazevslozky = input(zelena + "Název složky, do které chceš program uložit: " + zelena)
+nadpis = input(zelena + "Jaký chceš, aby byl název programu: " + zelena)
+autor = input(zelena + "Autor programu: " + zelena)
+popis = input(zelena + "Zadej popis programu: " + zelena)
+ulozitSoubor = input(zelena + "Zadej název souboru (bez přípony): " + zelena) + ".py"  # Vytvoření .py souboru
 
 # Cesta složky
-newpath = os.path.join(r'C:\Users\Rodrick\OneDrive - Obchodní akademie T.G.M. Kostelec nad Orlicí\Fujthon\Programy', nazevslozky)
+newpath = os.path.join(r'C:\Users\c24kucera\OneDrive - Obchodní akademie T.G.M. Kostelec nad Orlicí\Fujthon\Programy', nazevslozky)
 
 # Kontrola složky
 if not os.path.exists(newpath):
     os.makedirs(newpath)
-    print(f"Složka '{newpath}' byla vytvořena.")
+    print(zluta + "Složka '{newpath}' byla vytvořena.")
 else:
-    print(f"Složka '{newpath}' již existuje.")
+    print(zluta + "Složka '{newpath}' již existuje.")
 
 # Přečtení obsahu šablony
 with open(soubor_cesta, "r", encoding="utf-8") as soubor:
@@ -60,4 +60,4 @@ cesta_k_souboru = os.path.join(newpath, ulozitSoubor)
 with open(cesta_k_souboru, "w", encoding="utf-8") as soubor:
     soubor.write(finalni_obsah)
 
-print(f"Soubor byl úspěšně uložen jako '{cesta_k_souboru}'.")
+print(zelena + "Soubor byl úspěšně uložen jako '{cesta_k_souboru}'.")
