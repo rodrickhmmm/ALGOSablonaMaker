@@ -24,6 +24,7 @@ else:
 # Uživatelský vstup
 nazevslozky = input("Název složky, do které chceš program uložit: ")
 nadpis = input(bila + "Jaký chceš, aby byl název programu: " + zelena)
+autor = input("Autor programu:" + zelena)
 popis = input(bila + "Zadej popis programu: " + zelena)
 ulozitSoubor = input(bila + "Zadej název souboru (bez přípony): " + zelena) + ".py"  # Vytvoření .py souboru
 
@@ -44,7 +45,7 @@ with open(soubor_cesta, "r", encoding="utf-8") as soubor:
 # Vytvoření hlavičky souboru
 hlavicka = f"""# ===============================
 # Program: {nadpis} 
-# Autor: Tomáš Kučera
+# Autor: {autor}
 # Popis: {popis} 
 #
 # ===============================
