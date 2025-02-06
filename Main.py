@@ -9,11 +9,14 @@ modra = '\033[34;49;1m'
 zelena = "\033[32;49;1m"
 bila = "\033[0m"
 
+
+# zadání výchozího nastavení
 default_settings = {
     "autorprogramu": "default_value",
     "cestaulozeni": "default_value"
 }
 
+# definuje uložení nastavení
 def ulozit_nastaveni():
     nastaveni = {
         "autorprogramu": autorprogramu,
@@ -23,6 +26,7 @@ def ulozit_nastaveni():
     with open("settings.json", "w", encoding="utf-8") as file:
         json.dump(nastaveni, file, ensure_ascii=False, indent=4)
 
+# importuje nastavení
 def import1():
     global autorprogramu, cestaulozeni
     if os.path.exists("settings.json"):
@@ -45,18 +49,27 @@ def import1():
 
 import1()
 
+# vymazá vše co je na obrazovce
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# credits obrazovka
+def credits():
+    clear()
+    print(bila + "Vytvořil a naprogramoval Rodrick_ (Tomáš Kučera) v roce 2025.")
+    print(modra + "https://github.com/rodrickhmmm/ALGOSablonaMaker")
+    
 # hlavní menu---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def main_menu():
     print(modra + cervena + "===", modra + "ALGO Šablona Maker", cervena + "===")
-    print(modra + "[1]" + bila, "Maker")
+    print(modra + "[1]" + bila, "Generátor Šablon")
     print(modra + "[2]" + bila, "Nastavení")
+    print(modra + "[3]" + bila, "Credits")
+    print(modra + "[4]" + bila, "Exit")
 
     Choose = int(input(bila + "Vyber: " + zelena))
     
-    if Choose >= 4:
+    if Choose >= 5:
         print("Jseš debil?? Vyber 1 - 3!!!!!")
         exit()
     elif Choose == 1:
@@ -65,6 +78,12 @@ def main_menu():
     elif Choose == 2:
         clear()
         settings_menu()
+    elif Choose == 3:
+        clear()
+        credits()
+    elif Choose == 4:
+        clear()
+        exit()
         
 # šablona maker---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def maker():
@@ -79,9 +98,10 @@ def maker():
     else:
         print(cervena + "Jseš debil??? Vyber 1!!!!")
         exit()
+        
     # Uživatelský vstup
     nazevslozky = input(zelena + "Název složky, do které chceš program uložit: " + zelena)
-    nadpis = input(zelena + "Jaký chceš, aby byl název programu: " + zelena)
+    nadpis = input(zelena + "Jaký chceš, aby byl název programu (stačí zadat enter pokud je autor výchozí): " + zelena)
     autor = input(zelena + "Autor programu: " + zelena)
     if autor == "":
         autor = autorprogramu
@@ -89,16 +109,15 @@ def maker():
     ulozitSoubor = input(zelena + "Zadej název souboru (bez přípony): " + zelena) + ".py"  # Vytvoření .py souboru
 
     # Cesta složky
-    cestaslozky = "'" + cestaulozeni + "'"
     newpath = os.path.join(cestaulozeni, nazevslozky)
 
 
     # Kontrola složky
     if not os.path.exists(newpath):
         os.makedirs(newpath)
-        print(zluta + "Složka '{newpath}' byla vytvořena.")
+        print(zluta + "Složka", newpath, "byla vytvořena.")
     else:
-        print(zluta + "Složka '{newpath}' již existuje.")
+        print(zluta + "Složka", newpath, "již existuje.")
 
     # Přečtení obsahu šablony
     with open(soubor_cesta, "r", encoding="utf-8") as soubor:
@@ -124,7 +143,7 @@ def maker():
     with open(cesta_k_souboru, "w", encoding="utf-8") as soubor:
         soubor.write(finalni_obsah)
 
-    print(zelena + "Soubor byl úspěšně uložen jako '{cesta_k_souboru}'.")
+    print(zelena + "Soubor byl úspěšně uložen jako", cesta_k_souboru, ".")
 
 # nastavení menu---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # otazky v nastaveni
