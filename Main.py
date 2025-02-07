@@ -1,6 +1,7 @@
 # Importování modulů
 import os
 import json
+import time
 
 # KONFIGURACE BAREV 
 cervena = "\033[31;49;1m"
@@ -58,6 +59,8 @@ def credits():
     clear()
     print(bila + "Vytvořil a naprogramoval Rodrick_ (Tomáš Kučera) v roce 2025.")
     print(modra + "https://github.com/rodrickhmmm/ALGOSablonaMaker")
+    time.sleep(2)
+    main_menu()
     
 # hlavní menu---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def main_menu():
@@ -70,7 +73,7 @@ def main_menu():
     Choose = int(input(bila + "Vyber: " + zelena))
     
     if Choose >= 5:
-        print("Jseš debil?? Vyber 1 - 3!!!!!")
+        print("Jseš debil?? Vyber 1 - 4!!!!!")
         exit()
     elif Choose == 1:
         clear()
@@ -180,7 +183,6 @@ def settings_menu():
     elif vyber == "3":
         clear()
         main_menu()
-        
-        
-        
+
+# vyvolání main menu
 main_menu()
