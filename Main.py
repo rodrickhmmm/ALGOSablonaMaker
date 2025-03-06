@@ -2,6 +2,7 @@
 import os
 import json
 import time
+from datetime import date
 
 # KONFIGURACE BAREV 
 cervena = "\033[31;49;1m"
@@ -9,6 +10,10 @@ zluta = "\033[33;49;1m"
 modra = '\033[34;49;1m'
 zelena = "\033[32;49;1m"
 bila = "\033[0m"
+    
+# vymazá vše co je na obrazovce
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 # zadání výchozího nastavení
@@ -46,13 +51,10 @@ def import1():
         with open("settings.json", "w", encoding="utf-8") as file:
             json.dump(default_settings, file, ensure_ascii=False, indent=4)
         import1()
+        clear()
 
 
 import1()
-
-# vymazá vše co je na obrazovce
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 # credits obrazovka
 def credits():
@@ -93,21 +95,28 @@ def maker():
     print(modra + bila + "===", modra + "ALGO Šablona Maker", bila + "===")
     print(modra + "Vyber, jakou šablonu chceš použít")
     print(zluta + "1 - Počítání")
+    print(zluta + "2 - Grafika")
 
     vybratFile = int(input(bila + "Vyber: " + zelena))
 
     if vybratFile == 1:
-        soubor_cesta = "Sablona.txt"
+        soubor_cesta = "sablony/Sablona1.txt"
+    elif vybratFile == 2:
+        soubor_cesta = "sablony/SablonaGrafika.txt"
     else:
         print(cervena + "Jseš debil??? Vyber 1!!!!")
         exit()
         
     # Uživatelský vstup
-    nazevslozky = input(zelena + "Název složky, do které chceš program uložit: " + zelena)
-    nadpis = input(zelena + "Jaký chceš, aby byl název programu (stačí zadat enter pokud je autor výchozí): " + zelena)
-    autor = input(zelena + "Autor programu: " + zelena)
+    today = date.today().strftime('%d-%m-%Y')
+    nazevslozky = input(zelena + "Název složky, do které chceš program uložit (stačí zadat enter pokud je název složky datum): " + zelena)
+    if nazevslozky == "":
+        nazevslozky = today
+    nadpis = input(zelena + "Jaký chceš, aby byl název programu v komentáři: " + zelena)
+    autor = input(zelena + "Autor programu (stačí zadat enter pokud je autor výchozí): " + zelena)
     if autor == "":
         autor = autorprogramu
+        
     popis = input(zelena + "Zadej popis programu: " + zelena)
     ulozitSoubor = input(zelena + "Zadej název souboru (bez přípony): " + zelena) + ".py"  # Vytvoření .py souboru
 
@@ -131,12 +140,10 @@ def maker():
 # Program: {nadpis} 
 # Autor: {autor}
 # Popis: {popis} 
-#
 # ===============================
 
-# zadání výchozích hodnot
 
-    """
+"""
 
     # Sestavení finálního obsahu
     finalni_obsah = hlavicka + obsah
