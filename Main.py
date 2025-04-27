@@ -78,10 +78,12 @@ def jednodussi_menu():
     vybratFile = int(input(bila + "Vyber: " + zelena))
 
     if vybratFile == 1:
+        clear()
         soubor_cesta = "sablony/Sablona1.txt"
     elif vybratFile == 2:
+        clear()
         soubor_cesta = "sablony/SablonaGrafika.txt"
-    elif vybratFile == 161:
+    elif vybratFile == 0:
         global jednodussimenu
         jednodussimenu = "False"
         ulozit_nastaveni()
@@ -97,7 +99,9 @@ def jednodussi_menu():
     nadpis = input(zelena + "Název programu v komentáři: " + zelena)
     autor = autorprogramu
     popis = input(zelena + "Popis programu v komentáři: " + zelena)
-    ulozitSoubor = "L" + int(input(zelena + "Číslo lekce: " + zelena)) + "P" + int(input(zelena + "Číslo programu: " + zelena)) + ".py"  # Vytvoření .py souboru
+    lekce = (input(zelena + "Číslo lekce: " + zelena))
+    program = (input(zelena + "Číslo programu: " + zelena))
+    ulozitSoubor = "L" + lekce + "P" + program + "_" + nadpis + ".py"  # Vytvoření .py souboru
     # Cesta složky
     newpath = os.path.join(cestaulozeni, nazevslozky)
 
@@ -247,7 +251,7 @@ def otazka2():
 def otazka3():
     clear()
     global jednodussimenu
-    jednodussimenu = input(modra + "Chceš zapnout jednodušší menu? [y/n]: "+ bila)
+    jednodussimenu = input(modra + "Chceš zapnout jednodušší menu? [True/False]: "+ bila)
     ulozit_nastaveni()
     clear()
     settings_menu()
@@ -272,10 +276,11 @@ def settings_menu():
         clear()
         otazka3()
     elif vyber == "4":
-        if jednodussimenu == "ne":
+        if jednodussimenu == "False":
             clear()
             main_menu()
         else:
+            clear()
             jednodussi_menu()
         
 # vyvolání main menu

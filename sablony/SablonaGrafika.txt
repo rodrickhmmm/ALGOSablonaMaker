@@ -1,5 +1,5 @@
 # import pomocných knihoven
-# import random - pokud potřebuješ, smaž # na začátku
+# import random #- pokud potřebuješ, smaž # na začátku
 import tkinter
 
 #nastavení grafiky
@@ -8,11 +8,13 @@ canvas = tkinter.Canvas()
 canvas.pack()
 
 #vlastní program
+#defaultni sirka okna je 382 a vyska je 269
+ 
+"""
+template s ruznymy tvary:
 canvas.create_rectangle(100, 100, 250, 250,fill="red", outline="blue", width=3)
 canvas.create_line(10,10,50,50,fill="red", width=3)
 canvas.create_oval(50, 10, 150, 150,fill="green", outline="black", width=2)
-canvas.create_polygon(150, 10, 250, 50,200,100, fill="purple", outline="black", width=2)
+canvas.create_polygon(150, 10, 250, 50,200,100, fill="purple", outline="black", width=2)"""
 
-#tohle je tu třeba aby se grafické okno nezavřelo
-#nech to jako poslední příkaz
 root.mainloop()
