@@ -69,14 +69,22 @@ def credits():
     time.sleep(2)
     main_menu()
 # jednodussimenu---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vybrani = 1
+
 def jednodussi_menu():
+    vybratFile = 1
     print(modra + bila + "===", zelena + "ALGO Šablona Maker - Jednoduchý menu", bila + "===")
-    print(modra + "Vyber, jakou šablonu chceš použít")
-    print(zluta + "1 - Počítání")
-    print(zluta + "2 - Grafika")
-
-    vybratFile = int(input(bila + "Vyber: " + zelena))
-
+    
+    if vybrani == 1:
+        vybratFile == 1
+        clear()
+    else:
+        print(modra + "Vyber, jakou šablonu chceš použít")
+        print(zluta + "1 - Počítání")
+        print(zluta + "2 - Grafika")
+        vybratFile = int(input(bila + "Vyber: " + zelena))
+    
+        
     if vybratFile == 1:
         clear()
         soubor_cesta = "sablony/Sablona1.txt"
